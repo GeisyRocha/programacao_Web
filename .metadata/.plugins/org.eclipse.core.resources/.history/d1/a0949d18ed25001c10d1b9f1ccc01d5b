@@ -1,0 +1,6 @@
+package edu.ifam.aranoua.controller;
+
+@RestController
+public class CategoriaController {
+
+}

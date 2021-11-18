@@ -1,0 +1,5 @@
+package edu.ifam.aranoua.repository;
+
+public interface ItemPedidoRepository {
+
+}

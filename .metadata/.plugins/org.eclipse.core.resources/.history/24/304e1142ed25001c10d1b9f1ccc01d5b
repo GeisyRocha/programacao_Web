@@ -1,0 +1,8 @@
+package edu.ifam.aranoua.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CategoriaController {
+
+}
