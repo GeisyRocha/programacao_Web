@@ -18,7 +18,7 @@ import edu.ifam.aranoua.domain.Produto;
 import edu.ifam.aranoua.service.ProdutoService;
 
 @RestController
-@RequestMapping(value="produtos")
+@RequestMapping(value="produto")
 public class ProdutoController {
 
 	
@@ -54,10 +54,10 @@ public class ProdutoController {
 	}
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity <List<Produto>> listarTodos() {
-		List<Produto> produtos = produtoService.listarTodos();
+		List<Produto> produto = produtoService.listarTodos();
 		
 		
-		return ResponseEntity.ok().body(produtos);
+		return ResponseEntity.ok().body(produto);
 		
 	}
 	@RequestMapping(value="/pages", method=RequestMethod.GET)
@@ -66,10 +66,10 @@ public class ProdutoController {
 			@RequestParam (value="size", defaultValue = "2")Integer size,
 			@RequestParam (value="ord", defaultValue = "preco")String ord,
 			@RequestParam (value="dir", defaultValue = "ASC")String dir) {
-		Page<Produto> produtos = produtoService.listarPagina(page, size, ord, dir);
+		Page<Produto> produto = produtoService.listarPagina(page, size, ord, dir);
 		
 		
-		return ResponseEntity.ok().body(produtos);
+		return ResponseEntity.ok().body(produto);
 		
 	}
 }

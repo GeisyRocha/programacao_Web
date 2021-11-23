@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import edu.ifam.aranoua.domain.Produto;
 import edu.ifam.aranoua.repository.ProdutoRepository;
+import edu.ifam.aranoua.service.exception.DataIntegrityException;
 import edu.ifam.aranoua.service.exception.ObjectNotFoundException;
 
 @Service
@@ -35,7 +37,13 @@ public class ProdutoService {
 		}
 	 public void excluir(Integer id) {
 		 listar(id);
-			produtoRepository.deleteById(id);
+		 try{
+				produtoRepository.deleteById(id);
+
+	    	}catch(DataIntegrityViolationException e) {
+	    		throw new DataIntegrityException("Não foi possível realizar a exclusão! "
+	    				+ "ID: " + id + ", Tipo" +Produto.class.getName());
+	    	}
 		}
 	 public List<Produto> listarTodos() {
 			

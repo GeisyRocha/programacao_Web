@@ -1,5 +1,6 @@
 package edu.ifam.aranoua.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,11 @@ public class PedidoService {
 	}
 
 	 public Pedido inserir(Pedido pedido) {
-	    	pedido = pedidoRepository.save(pedido);
+	    	Pedido pedidoSaved = pedidoRepository.save(pedido);
+	    	
+	    	pedido.getItensPedido().forEach(itemPedido ->{
+	    		itemPedido.setPedido(pedidoSaved);
+	    	} );
 	    	
 	   	 itemPedidoRepository.saveAll(pedido.getItensPedido());
 	   	 
@@ -39,16 +44,32 @@ public class PedidoService {
 	 }   
 	 
 
-	 
 	 public Pedido atualizar(Integer id, Pedido pedido) {
 			pedido.setId(id);
+			
+			pedido.getItensPedido().forEach(itemPedido -> {
+				itemPedido.setPedido(pedido);
+			});
+			
+			itemPedidoRepository.saveAll(pedido.getItensPedido());
+			
 			return pedidoRepository.save(pedido);
 		}
 	 
 	 public void excluir(Integer id) {
-		 listar(id);
-			pedidoRepository.deleteById(id);
+		 Pedido pedido = listar(id);
+		 
+		 List<Integer> ids = new ArrayList<>();
+		 
+		 pedido.getItensPedido().forEach(itemPedido ->{
+			 ids.add(itemPedido.getId());
+		 });
+		 	
+		 itemPedidoRepository.deleteAllById(ids);
+		 
+		pedidoRepository.deleteById(id);
 		}
+	 
 	 public List<Pedido> listarTodos() {
 			
 			return pedidoRepository.findAll();

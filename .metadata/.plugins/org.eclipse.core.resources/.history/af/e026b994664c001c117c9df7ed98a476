@@ -1,0 +1,5 @@
+package edu.ifam.aranoua.service.exception;
+
+public class DataIntegrityException {
+
+}

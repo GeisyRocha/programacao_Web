@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import edu.ifam.aranoua.domain.exception.StardardError;
+import edu.ifam.aranoua.service.exception.DataIntegrityException;
 import edu.ifam.aranoua.service.exception.ObjectNotFoundException;
 
 @ControllerAdvice
@@ -19,5 +20,12 @@ public class ExceptionHandlerController {
 			ObjectNotFoundException e, HttpServletRequest request){
 		StardardError error = new StardardError (HttpStatus.NOT_FOUND.value(), e.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+	}
+	@ExceptionHandler(DataIntegrityException.class)
+	public ResponseEntity<StardardError>dataIntegrity(
+			
+			DataIntegrityException e, HttpServletRequest request){
+		StardardError error = new StardardError (HttpStatus.CONFLICT.value(), e.getMessage());
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
 	}
 }
