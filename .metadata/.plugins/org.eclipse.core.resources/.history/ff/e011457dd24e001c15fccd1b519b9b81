@@ -1,0 +1,5 @@
+package edu.ifam.aranoua.enums;
+
+public enum PerfinEnum {
+
+}

@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import edu.ifam.aranoua.domain.Cliente;
@@ -21,6 +22,9 @@ public class ClienteService {
 	
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public Cliente listar (Integer id) {
 		Optional<Cliente> cliente =clienteRepository.findById(id);
@@ -28,6 +32,7 @@ public class ClienteService {
 				"Objeto não encontrado! ID:" + id + ", Tipo: " + Cliente.class.getName()));
 	}
 	 public Cliente inserir(Cliente cliente) {
+		 cliente.setSenha(bCryptPasswordEncoder.encode(cliente.getSenha()));
 	    	return clienteRepository.save(cliente);
 	    	
 	 }   

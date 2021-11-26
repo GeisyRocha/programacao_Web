@@ -6,12 +6,16 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import edu.ifam.aranoua.enums.PerfilEnum;
 
 @Entity
 public class Cliente implements Serializable  {
@@ -24,6 +28,10 @@ public class Cliente implements Serializable  {
 	private String nome;
 	private String email;
 	private String cpf;
+	private String senha;
+	
+	@Enumerated(EnumType.STRING)
+	private PerfilEnum perfil;
 	
 	
 	@OneToMany(mappedBy = "cliente") 
@@ -34,12 +42,14 @@ public class Cliente implements Serializable  {
 		
 	}
 
-	public Cliente(Integer id, String nome, String email, String cpf) {
+	public Cliente(Integer id, String nome, String email, String cpf, String senha, PerfilEnum perfil) {
 		
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
+		this.senha = senha;
+		this.perfil=perfil;
 	}
 
 	public Integer getId() {
@@ -81,6 +91,23 @@ public class Cliente implements Serializable  {
 
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
+	}
+	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public PerfilEnum getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(PerfilEnum perfil) {
+		this.perfil = perfil;
 	}
 
 	@Override

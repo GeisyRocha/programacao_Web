@@ -1,0 +1,5 @@
+package edu.ifam.aranoua.security.service;
+
+public class UserDetailsServiceImpl {
+
+}
