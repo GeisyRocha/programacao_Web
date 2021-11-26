@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import edu.ifam.aranoua.domain.Categoria;
 import edu.ifam.aranoua.service.CategoriaService;
 
+
 @RestController
 @RequestMapping(value="categoria")
 public class CategoriaController {
