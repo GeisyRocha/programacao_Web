@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import edu.ifam.aranoua.security.filter.JwtAuthenticationFilter;
+import edu.ifam.aranoua.security.filter.JwtAuthorizationFilter;
 import edu.ifam.aranoua.security.util.JwtUtil;
 
 @Configuration
@@ -58,7 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtUtil));
-		
+		http.addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
+
 	}
 	
 	@Override

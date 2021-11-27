@@ -1,0 +1,5 @@
+package edu.ifam.aranoua.security.filter;
+
+public class JwtAuthorizationFilter {
+
+}

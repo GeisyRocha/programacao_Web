@@ -1,0 +1,22 @@
+package edu.ifam.aranoua.security.filter;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+
+import edu.ifam.aranoua.security.util.JwtUtil;
+
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
+	
+	private JwtUtil jwtUtil;
+	
+	private UserDetailsService userDetailsService;
+	
+	public JwtAuthorizationFilter(AuthenticationManager authManager, JwtUtil jwtUtil, 
+			UserDetailsService userDetailsService) {
+		super(authManager);
+		this.jwtUtil = jwtUtil;
+		this.userDetailsService = userDetailsService;
+	}
+
+}
