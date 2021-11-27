@@ -19,7 +19,7 @@ import edu.ifam.aranoua.service.PedidoService;
 
 
 
-@RestController
+@RestController 
 @RequestMapping(value="pedido")
 public class PedidoController {
 	

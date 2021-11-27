@@ -20,7 +20,7 @@ import edu.ifam.aranoua.service.CategoriaService;
 
 @RestController
 @RequestMapping(value="categoria")
-public class CategoriaController {
+public class CategoriaController { 
 	
 	@Autowired
 	private CategoriaService categoriaService;

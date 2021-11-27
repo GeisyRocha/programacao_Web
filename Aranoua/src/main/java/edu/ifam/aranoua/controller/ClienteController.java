@@ -22,6 +22,7 @@ import edu.ifam.aranoua.service.ClienteService;
 @RequestMapping(value="cliente")
 public class ClienteController {
 	
+	
 	@Autowired
 	private ClienteService clienteService;
 	

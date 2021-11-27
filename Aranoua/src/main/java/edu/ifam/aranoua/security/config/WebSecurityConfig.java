@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private Environment env;
+	private Environment env; 
 	
 	@Autowired
 	private UserDetailsService userDetailsService;

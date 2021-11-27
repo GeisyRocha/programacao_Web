@@ -14,7 +14,7 @@ import edu.ifam.aranoua.service.exception.ObjectNotFoundException;
 @ControllerAdvice
 public class ExceptionHandlerController {
 
-	@ExceptionHandler(ObjectNotFoundException.class)
+	@ExceptionHandler(ObjectNotFoundException.class) 
 	public ResponseEntity<StardardError>ObjectNotFound(
 			
 			ObjectNotFoundException e, HttpServletRequest request){

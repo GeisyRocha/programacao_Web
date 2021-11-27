@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.ifam.aranoua.domain.Cliente;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+public interface ClienteRepository  extends JpaRepository<Cliente, Integer> {
 	
 	@Transactional(readOnly= true)
 	Cliente findByCpf(String cpf);
