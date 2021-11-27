@@ -9,12 +9,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import edu.ifam.aranoua.domain.Cliente;
 import edu.ifam.aranoua.enums.PerfilEnum;
 import edu.ifam.aranoua.repository.ClienteRepository;
 import edu.ifam.aranoua.security.domain.JwtUser;
 
+@Service
 public class UserDetailsServiceImpl  implements UserDetailsService{
 
 	@Autowired
